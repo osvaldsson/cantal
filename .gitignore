@@ -13,3 +13,5 @@
 /cantal_values/target
 /cantal_history/target
 Cargo.lock
+web/node_modules/
+web/package-lock.json
