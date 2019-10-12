@@ -38,7 +38,7 @@ js-release:
 install: install-agent install-cli
 
 install-cli:
-	install -D -m 755 ./cantal_values/target/release/cantal $(DESTDIR)$(PREFIX)/bin/cantal
+	install -D -m 755 ./target/release/cantal $(DESTDIR)$(PREFIX)/bin/cantal
 
 install-agent:
 	install -d $(DESTDIR)$(PREFIX)/bin
