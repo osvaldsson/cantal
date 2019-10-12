@@ -3,7 +3,8 @@ RUSTC ?= rustc -C opt-level=3
 PREFIX ?= /usr
 CONFIGDIR ?= /etc/cantal
 DESTDIR ?=
-WEBPACK ?= webpack
+WEBPACK ?= ./node_modules/.bin/webpack
+RUSTC_LINKER ?= /usr/bin/gcc
 export CANTAL_VERSION = $(shell git describe)
 
 all: bin cli js
@@ -26,11 +27,11 @@ debug-bin:
 
 js:
 	-mkdir public/js 2>/dev/null
-	cd web; $(WEBPACK)
+	cd web; NODE_PATH=./node_modules $(WEBPACK)
 
 js-release:
 	-mkdir public/js 2>/dev/null
-	cd web; NODE_ENV=production $(WEBPACK) --optimize-minimize
+	cd web; NODE_PATH=./node_modules NODE_ENV=production $(WEBPACK) --optimize-minimize
 
 # ------------------ INSTALL -----------------------
 #
